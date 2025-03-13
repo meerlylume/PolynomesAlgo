@@ -13,6 +13,7 @@ public:
 	Polynome();
 	void DisplayPolynome();
 	void Add(Monome* newMonome);
+	void AddPolynomes(Polynome* other);
 
 	Monome* head;
 };
