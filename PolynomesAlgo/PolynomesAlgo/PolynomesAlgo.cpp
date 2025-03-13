@@ -1,20 +1,34 @@
-// PolynomesAlgo.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
+#include "Monome.h"
+#include "Polynome.h"
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    Polynome* P = new Polynome();
+
+    Monome* a = new Monome(2, 1);
+    Monome* b = new Monome(4, 0);
+    Monome* c = new Monome(5, 8);
+    Monome* d = new Monome(9, 3);
+    Monome* e = new Monome(1, 3);
+
+    Monome* f = new Monome(8, 5);
+    Monome* g = new Monome(3, 1);
+    Monome* h = new Monome(9, 9);
+    Monome* i = new Monome(4, 1);
+    Monome* j = new Monome(2, 0);
+
+    P->Add(a);
+    P->Add(b);
+    P->Add(c);
+    P->Add(d);
+    P->Add(e);
+
+    P->Add(f);
+    P->Add(g);
+    P->Add(h);
+    P->Add(i);
+    P->Add(j);
+
+    P->DisplayPolynome();
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file

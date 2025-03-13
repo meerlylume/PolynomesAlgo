@@ -127,7 +127,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Monome.cpp" />
+    <ClCompile Include="Polynome.cpp" />
     <ClCompile Include="PolynomesAlgo.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Monome.h" />
+    <ClInclude Include="Polynome.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
