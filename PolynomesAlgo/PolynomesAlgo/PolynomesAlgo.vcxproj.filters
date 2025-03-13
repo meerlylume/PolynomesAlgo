@@ -18,5 +18,19 @@
     <ClCompile Include="PolynomesAlgo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Monome.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Polynome.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Monome.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Polynome.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
