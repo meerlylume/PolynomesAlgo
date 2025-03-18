@@ -1,5 +1,7 @@
-#include "Polynome.h"#include "Polynome.h"
+#include "Polynome.h"
 #include <iostream>
+#include <list>
+#include <sstream>
 
 using namespace std;
 
@@ -25,29 +27,29 @@ void Polynome::Add(Monome* newMonome) {
 
     Monome* a = head;
     Monome* prev = nullptr;
-    while (a != nullptr && newMonome->exposant > a->exposant) {
+    while (a->next != nullptr && a->exposant < newMonome->exposant - 1) {
         prev = a;
         a = a->next;
     }
 
-    if (a != nullptr) 
-    {
-        if (newMonome->exposant == a->exposant) {
-            a->value += newMonome->value;
-        }
-        else if ( a->next != nullptr && newMonome->exposant == a->next->exposant) {
+    if (a->exposant == newMonome->exposant) {
+        a->value += newMonome->value;
+        return;
+    }
+
+    if (a->next != nullptr) {
+        if (a->next->exposant == newMonome->exposant) {
             a->next->value += newMonome->value;
         }
-        else if (newMonome->exposant > a->exposant) {
-            newMonome->next = a->next;
-            a->next = newMonome;
-        }
         else {
-            newMonome->next = a;
-            prev->next = newMonome;
+            AddAfterMonome(a, newMonome);
         }
-    } 
+    }
     else {
+        if (a->exposant > newMonome->exposant) {
+            AddAfterMonome(prev, newMonome);
+            return;
+        }
         AddToEndOfList(newMonome);
     }
 }
@@ -56,6 +58,7 @@ void Polynome::AddToEndOfList(Monome* newMonome) {
     Monome* a = head;
 
     while (a->next != nullptr) { a = a->next; }
+
     a->next = newMonome;
 }
 
@@ -65,10 +68,6 @@ void Polynome::AddAfterMonome(Monome* monome, Monome* toAdd) {
 }
 
 void Polynome::DisplayPolynome() {
-    if (head == nullptr) {
-        cout << "Polynome vide" << endl;
-    }
-
     Monome* a = head;
     while (a != nullptr) {
         if (a->next != nullptr) cout << a->value << "x^" << a->exposant << " + ";
@@ -79,43 +78,79 @@ void Polynome::DisplayPolynome() {
     cout << endl;
 }
 
-void Polynome::AddPolynomes(Polynome* p) {
-    if (head == nullptr && p->head != nullptr) {
-        head = p->head;
-        cout << "Résultat de l'addition: ";
-        DisplayPolynome();
-        return;
+void Polynome::AddPolynomes(Polynome* other) {
+    Monome* z = other->head;
+
+    while (z != nullptr) {
+        Add(z);
+        z = z->next;
     }
-    else if (p->head == nullptr && head != nullptr) {
-        p->head = head;
-        cout << "Résultat de l'addition: ";
-        DisplayPolynome();
-        return;
+}
+
+void Polynome::InputMonome() {
+    //Handle both x and x^ to account for user error
+
+    cout << "Enter a monome: ";
+    string input;
+    cin >> input;
+    cout << endl;
+
+    //Declare vars
+    int value       = 0;
+    int exposant    = 0;
+    bool doingValue = true;
+    string temp     = "";
+
+    //Parse through and get values
+
+    //HANDLE MONKEY TEST
+    for (int i = 0; i < input.length(); i++)
+    {
+        cout << i << " / " << input.length() << " : " << input[i] << endl;
+        // Found + or -
+        if (input[i] == '+' || input[i] == '-') { //HANDLE * AND /
+            cout << "Found + or - " << endl;
+            // If input[0]
+            if (i == 0 || input[i - 1] == 'x') {
+                temp += input[i];
+            }
+            // Any other case
+            else {
+                // Add what's in temp so you can start up the next addition
+                if (doingValue) value += stoi(temp);
+                else         exposant += stoi(temp);
+
+                temp  = "";
+                temp += input[i];
+            }
+        }
+        // Found x
+        else if (input[i] == 'x') {
+            cout << "Found x at " << i << endl;
+            if (!doingValue) {
+                cout << "Exposant cannot have an x" << endl;
+                return;
+            }
+            else {
+                cout << "Setting value to temp: " << temp << endl;
+                value     += stoi(temp);
+                temp       = "";
+                doingValue = false;
+                cout << "Now doing exposants " << endl;
+                cout << endl;
+            }
+        }
+        else {
+            temp += input[i];
+            cout << "Adding " << input[i] << " to temp." << endl;
+        }
     }
 
-    /*Polynome* resultat = new Polynome();
-    Monome* a = p->head;
-    while (a != nullptr) {
-        Monome* copy = new Monome(a->value, a->exposant);
-        cout << "adding" << endl;
-        resultat->Add(copy);
-        a = a->next;
-    }
-    a = head;
-    while (a != nullptr) {
-        Monome* copy = new Monome(a->value, a->exposant);
-        cout << "adding" << endl;
-        resultat->Add(copy);
-        a = a->next;
-    }
-    resultat->DisplayPolynome();*/
+    if (temp == "") exposant  = 0;
+    else            exposant += stoi(temp);
 
-    Monome* a = p->head;
-    while (a != nullptr) {
-        Monome* copy = new Monome(a->value, a->exposant);
-        Add(copy);
-        a = a->next;
-    }
+    //Create monome with the parsed values and add it to the polynome
+    Monome* newNode = new Monome(value, exposant);
+    Add(newNode);
     DisplayPolynome();
-    
 }

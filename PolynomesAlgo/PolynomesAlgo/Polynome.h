@@ -14,6 +14,7 @@ public:
 	void DisplayPolynome();
 	void Add(Monome* newMonome);
 	void AddPolynomes(Polynome* other);
+	void InputMonome();
 
 	Monome* head;
 };

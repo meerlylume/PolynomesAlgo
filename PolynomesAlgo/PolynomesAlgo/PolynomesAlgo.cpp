@@ -1,9 +1,14 @@
 #include <iostream>
+#include <list>
+#include <sstream>
 #include "Monome.h"
 #include "Polynome.h"
 
+using namespace std;
+
 int main()
 {
+    /*
     Polynome* P = new Polynome();
     Polynome* Q = new Polynome();
 
@@ -35,4 +40,8 @@ int main()
     Q->DisplayPolynome();
     P->AddPolynomes(Q);
     P->DisplayPolynome();
+    */
+
+    Polynome* R = new Polynome();
+    R->InputMonome();
 }
