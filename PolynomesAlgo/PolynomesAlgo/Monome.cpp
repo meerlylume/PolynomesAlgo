@@ -17,3 +17,15 @@ Monome* Monome::PrimitiveMonome() {
 	Monome* primitive = new Monome(value, exposant);
 	return primitive;
 }
+
+Monome* Monome::DeriveMonome() {
+	float newValue;
+	float newExposant;
+
+	newValue    = value * exposant;
+	newExposant = exposant - 1;
+
+	Monome* derivedMonome = new Monome(newValue, newExposant);
+
+	return derivedMonome;
+}

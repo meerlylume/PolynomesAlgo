@@ -158,19 +158,6 @@ void Polynome::InputPolynome() {
     }
 }
 
-Monome* Polynome::DeriveMonome(Monome* monome) {
-    float value;
-    float exposant;
-
-    value    = monome->value * monome->exposant;
-    exposant = monome->exposant - 1;
-
-    Monome* derivedMonome = new Monome(value, exposant);
-
-    return derivedMonome;
-}
-
-
 void Polynome::Menu() {
     cout << "What will you do ? " << endl;
     cout << "A - Add a new Monome " << endl;
@@ -278,7 +265,7 @@ void Polynome::DerivePolynome() {
     Monome* a = head;
 
     while (a != nullptr) { 
-        Monome* b = DeriveMonome(a);
+        Monome* b = a->DeriveMonome();
         if (b->value != 0) DerivedPolynome->Add(b);
         a = a->next;
     }

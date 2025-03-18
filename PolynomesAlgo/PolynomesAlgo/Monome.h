@@ -9,6 +9,7 @@ class Monome
 public:
 	Monome(float value, float exposant);
 	Monome* PrimitiveMonome();
+	Monome* DeriveMonome();
 
 	float value;
 	float exposant;
