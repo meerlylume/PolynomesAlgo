@@ -71,7 +71,7 @@ void Polynome::FreeSpace(Monome* prev, Monome* current) {
     if (current->value == 0)
     {
         prev->next = current->next;
-        delete current;
+        free(current);
     }
 }
 
@@ -100,9 +100,9 @@ void Polynome::DisplayPolynome() {
 }
 
 void Polynome::InputMonome() {
-    int value    = 0;
-    int exposant = 0;
-    int input    = 0;
+    float value    = 0;
+    float exposant = 0;
+    float input    = 0;
 
     cout << "Enter a coefficient: ";
     value    = GetIntInput();
@@ -122,7 +122,7 @@ void Polynome::InputMonome() {
 
 int Polynome::GetIntInput() {
     bool isValid = false;
-    int input;
+    float input;
 
     while (!isValid) {
         cin >> input;
@@ -159,8 +159,8 @@ void Polynome::InputPolynome() {
 }
 
 Monome* Polynome::DeriveMonome(Monome* monome) {
-    int value;
-    int exposant;
+    float value;
+    float exposant;
 
     value    = monome->value * monome->exposant;
     exposant = monome->exposant - 1;
@@ -251,8 +251,8 @@ Polynome* Polynome::MultiplyPolynomes(Polynome* other) {
 
     Monome* a = head;
     Monome* b = other->head;
-    int value;
-    int exposant;
+    float value;
+    float exposant;
 
     while (a != nullptr) {
         while (b != nullptr) {
@@ -299,4 +299,18 @@ Polynome* Polynome::SubstractPolynomes(Polynome* other) {
     }
 
     return this;
+}
+
+Polynome* Polynome::Primitive() {
+    Polynome* resultat = new Polynome();
+
+    Monome* a = head;
+    while (a != nullptr) {
+        Monome* primitiveMonome = a->PrimitiveMonome();
+        resultat->Add(primitiveMonome);
+        cout << primitiveMonome->value << "||" << primitiveMonome->exposant << endl;
+        a = a->next;
+    }
+    resultat->DisplayPolynome();
+    return resultat;
 }

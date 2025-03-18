@@ -7,10 +7,11 @@ class Monome
 {
 	//valeur, exposant, suivant
 public:
-	Monome(int value, int exposant);
+	Monome(float value, float exposant);
+	Monome* PrimitiveMonome();
 
-	int value;
-	int exposant;
+	float value;
+	float exposant;
 	Monome* next;
 };
 
