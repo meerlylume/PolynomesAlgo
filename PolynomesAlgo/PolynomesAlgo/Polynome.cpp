@@ -301,3 +301,8 @@ Polynome* Polynome::Primitive() {
     resultat->DisplayPolynome();
     return resultat;
 }
+
+Polynome* Polynome::Duplicate() {
+    Polynome* copy = this;
+    return copy;
+}
