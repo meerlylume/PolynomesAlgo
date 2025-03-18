@@ -11,12 +11,13 @@ private:
 	void AddAfterMonome(Monome* monome, Monome* toAdd);
 	void InputMonome();
 	int  GetIntInput();
+	void FreeSpace(Monome* prev, Monome* current);
 public:
 	Polynome();
 	void DisplayPolynome();
 	void Add(Monome* newMonome);
-	void AddPolynomes(Polynome* other);
 	void InputPolynome();
+	Polynome* AddPolynomes(Polynome* other);
 
 	Monome* head;
 };
