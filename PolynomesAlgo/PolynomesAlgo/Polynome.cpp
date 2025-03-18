@@ -93,27 +93,27 @@ void Polynome::DisplayPolynome() {
     cout << endl;
 }
 
-Polynome* Polynome::AddPolynomes(Polynome* p) {
+Polynome* Polynome::AddPolynomes(Polynome* other) {
     Polynome* resultat = new Polynome();
 
-    if (head == nullptr && p->head != nullptr) {
-        resultat->head = p->head;
+    if (head == nullptr && other->head != nullptr) {
+        resultat->head = other->head;
         cout << "Résultat de l'addition: ";
         DisplayPolynome();
         return resultat;
     }
-    else if (p->head == nullptr && head != nullptr) {
-        p->head = head;
+    else if (other->head == nullptr && head != nullptr) {
+        other->head = head;
         cout << "Résultat de l'addition: ";
         DisplayPolynome();
         return resultat;
     }
-    else if (head == nullptr && p->head == nullptr) {
+    else if (head == nullptr && other->head == nullptr) {
         cout << "Les deux polynomes sont vides." << endl;
         return resultat;
     }
 
-    Monome* a = p->head;
+    Monome* a = other->head;
     while (a != nullptr) {
         Monome* copy = new Monome(a->value, a->exposant);
         resultat->Add(copy);
@@ -126,7 +126,46 @@ Polynome* Polynome::AddPolynomes(Polynome* p) {
         a = a->next;
     }
 
+    delete a;
     resultat->DisplayPolynome();
     return resultat;
     
 }
+
+Polynome* Polynome::MultiplyPolynomes(Polynome* other) {
+    Polynome* resultat = new Polynome();
+
+    if (head != nullptr && other->head == nullptr) {
+        cout << "Le deuxième polynome est vide" << endl;
+        return resultat;
+    } else if (head == nullptr && other->head != nullptr) {
+        cout << "Le premier polynome est vide" << endl;
+        return resultat;
+    } else if (head == nullptr && other->head == nullptr) {
+        cout << "Les deux polynomes est vide" << endl;
+        return resultat;
+    }
+
+    Monome* a = head;
+    Monome* b = other->head;
+    int value;
+    int exposant;
+
+    while (a != nullptr) {
+        while (b != nullptr) {
+            value = a->value * b->value;
+            exposant = a->exposant + b->exposant;
+
+            Monome* c = new Monome(value, exposant);
+            resultat->Add(c);
+
+            b = b->next;
+        }
+
+        a = a->next;
+        b = other->head;
+    }
+    resultat->DisplayPolynome();
+    return resultat;
+}
+

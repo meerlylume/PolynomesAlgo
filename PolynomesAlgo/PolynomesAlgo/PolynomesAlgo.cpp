@@ -29,5 +29,7 @@ int main()
 
     P->DisplayPolynome();
     Q->DisplayPolynome();
-    P->AddPolynomes(Q);
+    Polynome* resultat = P->AddPolynomes(Q);
+
+    Polynome* resultat1 = P->MultiplyPolynomes(Q);
 }
