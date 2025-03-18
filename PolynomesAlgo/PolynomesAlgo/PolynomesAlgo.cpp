@@ -36,4 +36,5 @@ int main()
     cout << endl;
 
     Q->AddPolynomes(P);
+    cout << endl;
 }

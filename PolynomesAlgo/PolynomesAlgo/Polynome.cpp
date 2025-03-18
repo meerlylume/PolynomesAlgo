@@ -8,7 +8,6 @@ Polynome::Polynome() {
 }
 
 void Polynome::Add(Monome* newMonome) {
-
     if (head == nullptr) {
         head = newMonome;
         return;
@@ -94,14 +93,29 @@ void Polynome::AddPolynomes(Polynome* p) {
         return;
     }
 
+    /*Polynome* resultat = new Polynome();
     Monome* a = p->head;
     while (a != nullptr) {
-        DisplayPolynome();
-        Add(a);
+        Monome* copy = new Monome(a->value, a->exposant);
+        cout << "adding" << endl;
+        resultat->Add(copy);
         a = a->next;
     }
-    cout << "Résultat de l'addition: ";
+    a = head;
+    while (a != nullptr) {
+        Monome* copy = new Monome(a->value, a->exposant);
+        cout << "adding" << endl;
+        resultat->Add(copy);
+        a = a->next;
+    }
+    resultat->DisplayPolynome();*/
+
+    Monome* a = p->head;
+    while (a != nullptr) {
+        Monome* copy = new Monome(a->value, a->exposant);
+        Add(copy);
+        a = a->next;
+    }
     DisplayPolynome();
-    cout << endl;
     
 }
