@@ -88,100 +88,46 @@ void Polynome::AddPolynomes(Polynome* other) {
 }
 
 void Polynome::InputMonome() {
-    //Handle both x and x^ to account for user error
+    int value    = 0;
+    int exposant = 0;
+    int input    = 0;
 
-    cout << "Enter a monome: ";
-    string input;
-    cin >> input;
-    cout << endl;
+    cout << "Enter a coefficient: ";
+    value    = GetIntInput();
 
-    //Declare vars
-    int value          = 0;
-    int exposant       = 0;
-    bool doingValue    = true;
-    bool isInOperation = false;
-    string temp        = "";
-    string temp2       = ""; //Only used in *, /, **
-    string operand     = ""; //Only used in *, /, **
+    cout << "Enter an exposant: ";
+    exposant = GetIntInput();
 
-    //Parse through and get values
-
-    //HANDLE MONKEY TEST
-    for (int i = 0; i < input.length(); i++)
-    {
-        cout << i << " / " << input.length() << " : " << input[i] << endl;
-        // Found + or -
-        if (input[i] == '+' || input[i] == '-') {
-            cout << "Found + or - " << endl;
-            // If input[0]
-            if (i == 0 || input[i - 1] == 'x') {
-                temp += input[i];
-            }
-            // Any other case
-            else {
-                // Add what's in temp so you can start up the next addition
-                if (doingValue) value += stoi(temp);
-                else         exposant += stoi(temp);
-
-                temp  = "";
-                temp += input[i];
-            }
-        }
-        /*
-        if (input[i] == '*' || input[i] == '/') {
-            isInOperation = true;
-            if (input[i + 1] != NULL && input[i + 1] == '*') {
-                // is **
-
-            }
-            else {
-                // is / or *
-
-            }
-        }
-        */
-        else if (isInOperation) {
-            if (input[i] == '*' || input[i] == '/') {
-
-            }
-        }
-        // Found x
-        else if (input[i] == 'x') {
-            cout << "Found x at " << i << endl;
-            if (!doingValue) {
-                cout << "Exposant cannot have an x" << endl;
-                return;
-            }
-            else {
-                cout << "Setting value to temp: " << temp << endl;
-                value     += stoi(temp);
-                temp       = "";
-                doingValue = false;
-                cout << "Now doing exposants " << endl;
-                cout << endl;
-            }
-        }
-        else {
-            temp += input[i];
-            cout << "Adding " << input[i] << " to temp." << endl;
-        }
-    }
-
-    if (temp == "") exposant  = 0;
-    else            exposant += stoi(temp);
-
-    //Create monome with the parsed values and add it to the polynome
     Monome* newNode = new Monome(value, exposant);
     Add(newNode);
     DisplayPolynome();
 }
 
+int Polynome::GetIntInput() {
+    bool isValid = false;
+    int input;
+
+    while (!isValid) {
+        cin >> input;
+        if (!cin) {
+            cout << "Not an integer. Try again " << endl;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
+        else {
+            isValid = true;
+            return input;
+        }
+    }
+}
+
 void Polynome::InputPolynome() {
+    cout << endl;
     InputMonome();
     cout << "Continue? Y/N ";
     char answer;
     cin >> answer;
-    switch (answer)
+    switch (toupper(answer))
     {
     default:
         return;
@@ -194,93 +140,3 @@ void Polynome::InputPolynome() {
         break;
     }
 }
-
-//BACKUP 
-/*
-void Polynome::InputMonome() {
-    //Handle both x and x^ to account for user error
-
-    cout << "Enter a monome: ";
-    string input;
-    cin >> input;
-    cout << endl;
-
-    //Declare vars
-    int value          = 0;
-    int exposant       = 0;
-    bool doingValue    = true;
-    bool isInOperation = false;
-    string temp        = "";
-    string temp2       = ""; //Only used in *, /, **
-    string operand     = ""; //Only used in *, /, **
-
-    //Parse through and get values
-
-    //HANDLE MONKEY TEST
-    for (int i = 0; i < input.length(); i++)
-    {
-        cout << i << " / " << input.length() << " : " << input[i] << endl;
-        // Found + or -
-        if (input[i] == '+' || input[i] == '-') {
-            cout << "Found + or - " << endl;
-            // If input[0]
-            if (i == 0 || input[i - 1] == 'x') {
-                temp += input[i];
-            }
-            // Any other case
-            else {
-                // Add what's in temp so you can start up the next addition
-                if (doingValue) value += stoi(temp);
-                else         exposant += stoi(temp);
-
-                temp  = "";
-                temp += input[i];
-            }
-        }
-        if (input[i] == '*' || input[i] == '/') {
-            isInOperation = true;
-            if (input[i + 1] != NULL && input[i + 1] == '*') {
-                // is **
-
-            }
-            else {
-                // is / or *
-
-            }
-        }
-        //else if (isInOperation) {
-            //if (input[i] == '*' || input[i] == '/') {
-
-            //}
-        //}
-        // Found x
-        else if (input[i] == 'x') {
-            cout << "Found x at " << i << endl;
-            if (!doingValue) {
-                cout << "Exposant cannot have an x" << endl;
-                return;
-            }
-            else {
-                cout << "Setting value to temp: " << temp << endl;
-                value     += stoi(temp);
-                temp       = "";
-                doingValue = false;
-                cout << "Now doing exposants " << endl;
-                cout << endl;
-            }
-        }
-        else {
-            temp += input[i];
-            cout << "Adding " << input[i] << " to temp." << endl;
-        }
-    }
-
-    if (temp == "") exposant  = 0;
-    else            exposant += stoi(temp);
-
-    //Create monome with the parsed values and add it to the polynome
-    Monome* newNode = new Monome(value, exposant);
-    Add(newNode);
-    DisplayPolynome();
-}
-*/
