@@ -188,18 +188,18 @@ Polynome* Polynome::AddPolynomes(Polynome* other) {
 
     if (head == nullptr && other->head != nullptr) {
         resultat->head = other->head;
-        cout << "R�sultat de l'addition: ";
+        cout << "Addition results: ";
         DisplayPolynome();
         return resultat;
     }
     else if (other->head == nullptr && head != nullptr) {
         other->head = head;
-        cout << "R�sultat de l'addition: ";
+        cout << "Addition results: ";
         DisplayPolynome();
         return resultat;
     }
     else if (head == nullptr && other->head == nullptr) {
-        cout << "Les deux polynomes sont vides." << endl;
+        cout << "Both polynomes are empty." << endl;
         return resultat;
     }
 
@@ -226,13 +226,13 @@ Polynome* Polynome::MultiplyPolynomes(Polynome* other) {
     Polynome* resultat = new Polynome();
 
     if (head != nullptr && other->head == nullptr) {
-        cout << "Le deuxi�me polynome est vide" << endl;
+        cout << "The second polynome is empty." << endl;
         return resultat;
     } else if (head == nullptr && other->head != nullptr) {
-        cout << "Le premier polynome est vide" << endl;
+        cout << "The first polynome is empty." << endl;
         return resultat;
     } else if (head == nullptr && other->head == nullptr) {
-        cout << "Les deux polynomes est vide" << endl;
+        cout << "Both polynomes are empty." << endl;
         return resultat;
     }
 
