@@ -19,6 +19,9 @@ public:
 	void InputPolynome();
 	Polynome* AddPolynomes(Polynome* other);
 	Polynome* MultiplyPolynomes(Polynome* other);
+	void DerivePolynome();
+	void Menu();
+	Monome* DeriveMonome(Monome* monome);
 
 	Monome* head;
 };

@@ -1,3 +1,3 @@
 ﻿  Polynome.cpp
-C:\Users\liter\Documents\GitHub\LesDelinquants\PolynomesAlgo\PolynomesAlgo\PolynomesAlgo\Polynome.cpp(122): warning C4715: 'Polynome::GetIntInput': not all control paths return a value
+C:\Users\liter\Documents\GitHub\LesDelinquants\PolynomesAlgo\PolynomesAlgo\PolynomesAlgo\Polynome.cpp(127): warning C4715: 'Polynome::GetIntInput': not all control paths return a value
   PolynomesAlgo.vcxproj -> C:\Users\liter\Documents\GitHub\LesDelinquants\PolynomesAlgo\PolynomesAlgo\x64\Debug\PolynomesAlgo.exe
