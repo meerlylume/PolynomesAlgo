@@ -2,6 +2,7 @@
 #include <iostream>
 #include <list>
 #include <sstream>
+#include <cstdlib>
 
 using namespace std;
 
@@ -10,6 +11,11 @@ Polynome::Polynome() {
 }
 
 void Polynome::Add(Monome* newMonome) {
+    if (newMonome->value == 0) {
+        free(newMonome);
+        return;
+    }
+
     if (head == nullptr) {
         head = newMonome;
         return;
@@ -40,6 +46,7 @@ void Polynome::Add(Monome* newMonome) {
     if (a->next != nullptr) {
         if (a->next->exposant == newMonome->exposant) {
             a->next->value += newMonome->value;
+            FreeSpace(a, a->next);
         }
         else {
             AddAfterMonome(a, newMonome);
@@ -51,6 +58,14 @@ void Polynome::Add(Monome* newMonome) {
             return;
         }
         AddToEndOfList(newMonome);
+    }
+}
+
+void Polynome::FreeSpace(Monome* prev, Monome* current) {
+    if (current->value == 0)
+    {
+        prev->next = current->next;
+        delete current;
     }
 }
 
@@ -76,15 +91,6 @@ void Polynome::DisplayPolynome() {
     }
 
     cout << endl;
-}
-
-void Polynome::AddPolynomes(Polynome* other) {
-    Monome* z = other->head;
-
-    while (z != nullptr) {
-        Add(z);
-        z = z->next;
-    }
 }
 
 void Polynome::InputMonome() {
@@ -140,3 +146,80 @@ void Polynome::InputPolynome() {
         break;
     }
 }
+
+Polynome* Polynome::AddPolynomes(Polynome* other) {
+    Polynome* resultat = new Polynome();
+
+    if (head == nullptr && other->head != nullptr) {
+        resultat->head = other->head;
+        cout << "R�sultat de l'addition: ";
+        DisplayPolynome();
+        return resultat;
+    }
+    else if (other->head == nullptr && head != nullptr) {
+        other->head = head;
+        cout << "R�sultat de l'addition: ";
+        DisplayPolynome();
+        return resultat;
+    }
+    else if (head == nullptr && other->head == nullptr) {
+        cout << "Les deux polynomes sont vides." << endl;
+        return resultat;
+    }
+
+    Monome* a = other->head;
+    while (a != nullptr) {
+        Monome* copy = new Monome(a->value, a->exposant);
+        resultat->Add(copy);
+        a = a->next;
+    }
+    a = head;
+    while (a != nullptr) {
+        Monome* copy = new Monome(a->value, a->exposant);
+        resultat->Add(copy);
+        a = a->next;
+    }
+
+    delete a;
+    resultat->DisplayPolynome();
+    return resultat;
+    
+}
+
+Polynome* Polynome::MultiplyPolynomes(Polynome* other) {
+    Polynome* resultat = new Polynome();
+
+    if (head != nullptr && other->head == nullptr) {
+        cout << "Le deuxi�me polynome est vide" << endl;
+        return resultat;
+    } else if (head == nullptr && other->head != nullptr) {
+        cout << "Le premier polynome est vide" << endl;
+        return resultat;
+    } else if (head == nullptr && other->head == nullptr) {
+        cout << "Les deux polynomes est vide" << endl;
+        return resultat;
+    }
+
+    Monome* a = head;
+    Monome* b = other->head;
+    int value;
+    int exposant;
+
+    while (a != nullptr) {
+        while (b != nullptr) {
+            value = a->value * b->value;
+            exposant = a->exposant + b->exposant;
+
+            Monome* c = new Monome(value, exposant);
+            resultat->Add(c);
+
+            b = b->next;
+        }
+
+        a = a->next;
+        b = other->head;
+    }
+    resultat->DisplayPolynome();
+    return resultat;
+}
+
