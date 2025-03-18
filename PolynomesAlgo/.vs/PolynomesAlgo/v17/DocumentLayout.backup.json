@@ -11,16 +11,16 @@
       "RelativeMoniker": "D:0:0:{F95BEE1E-026A-4FB4-B0C4-F4BBF2DDDC75}|PolynomesAlgo\\PolynomesAlgo.vcxproj|solutionrelative:PolynomesAlgo\\PolynomesAlgo.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F95BEE1E-026A-4FB4-B0C4-F4BBF2DDDC75}|PolynomesAlgo\\PolynomesAlgo.vcxproj|C:\\Users\\liter\\Documents\\GitHub\\LesDelinquants\\PolynomesAlgo\\PolynomesAlgo\\PolynomesAlgo\\Monome.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{F95BEE1E-026A-4FB4-B0C4-F4BBF2DDDC75}|PolynomesAlgo\\PolynomesAlgo.vcxproj|solutionrelative:PolynomesAlgo\\Monome.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{F95BEE1E-026A-4FB4-B0C4-F4BBF2DDDC75}|PolynomesAlgo\\PolynomesAlgo.vcxproj|C:\\Users\\liter\\Documents\\GitHub\\LesDelinquants\\PolynomesAlgo\\PolynomesAlgo\\PolynomesAlgo\\Polynome.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F95BEE1E-026A-4FB4-B0C4-F4BBF2DDDC75}|PolynomesAlgo\\PolynomesAlgo.vcxproj|solutionrelative:PolynomesAlgo\\Polynome.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F95BEE1E-026A-4FB4-B0C4-F4BBF2DDDC75}|PolynomesAlgo\\PolynomesAlgo.vcxproj|C:\\Users\\liter\\Documents\\GitHub\\LesDelinquants\\PolynomesAlgo\\PolynomesAlgo\\PolynomesAlgo\\Monome.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{F95BEE1E-026A-4FB4-B0C4-F4BBF2DDDC75}|PolynomesAlgo\\PolynomesAlgo.vcxproj|solutionrelative:PolynomesAlgo\\Monome.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F95BEE1E-026A-4FB4-B0C4-F4BBF2DDDC75}|PolynomesAlgo\\PolynomesAlgo.vcxproj|C:\\Users\\liter\\Documents\\GitHub\\LesDelinquants\\PolynomesAlgo\\PolynomesAlgo\\PolynomesAlgo\\Polynome.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{F95BEE1E-026A-4FB4-B0C4-F4BBF2DDDC75}|PolynomesAlgo\\PolynomesAlgo.vcxproj|solutionrelative:PolynomesAlgo\\Polynome.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{F95BEE1E-026A-4FB4-B0C4-F4BBF2DDDC75}|PolynomesAlgo\\PolynomesAlgo.vcxproj|C:\\Users\\liter\\Documents\\GitHub\\LesDelinquants\\PolynomesAlgo\\PolynomesAlgo\\PolynomesAlgo\\Monome.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F95BEE1E-026A-4FB4-B0C4-F4BBF2DDDC75}|PolynomesAlgo\\PolynomesAlgo.vcxproj|solutionrelative:PolynomesAlgo\\Monome.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,7 +34,7 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "Monome.h",
               "DocumentMoniker": "C:\\Users\\liter\\Documents\\GitHub\\LesDelinquants\\PolynomesAlgo\\PolynomesAlgo\\PolynomesAlgo\\Monome.h",
               "RelativeDocumentMoniker": "PolynomesAlgo\\Monome.h",
@@ -54,19 +54,21 @@
               "RelativeToolTip": "PolynomesAlgo\\Monome.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-03-13T08:46:00.672Z"
+              "WhenOpened": "2025-03-13T08:46:00.672Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "Polynome.h",
               "DocumentMoniker": "C:\\Users\\liter\\Documents\\GitHub\\LesDelinquants\\PolynomesAlgo\\PolynomesAlgo\\PolynomesAlgo\\Polynome.h",
               "RelativeDocumentMoniker": "PolynomesAlgo\\Polynome.h",
               "ToolTip": "C:\\Users\\liter\\Documents\\GitHub\\LesDelinquants\\PolynomesAlgo\\PolynomesAlgo\\PolynomesAlgo\\Polynome.h",
               "RelativeToolTip": "PolynomesAlgo\\Polynome.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAATAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-03-13T08:40:41.524Z"
+              "WhenOpened": "2025-03-13T08:40:41.524Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -76,7 +78,7 @@
               "RelativeDocumentMoniker": "PolynomesAlgo\\Polynome.cpp",
               "ToolTip": "C:\\Users\\liter\\Documents\\GitHub\\LesDelinquants\\PolynomesAlgo\\PolynomesAlgo\\PolynomesAlgo\\Polynome.cpp",
               "RelativeToolTip": "PolynomesAlgo\\Polynome.cpp",
-              "ViewState": "AgIAAB8AAAAAAAAAAAAAACgAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAEYAAAAAAAAAAAAiwFQAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-03-13T08:45:59.782Z",
               "EditorCaption": ""
@@ -89,7 +91,7 @@
               "RelativeDocumentMoniker": "PolynomesAlgo\\PolynomesAlgo.cpp",
               "ToolTip": "C:\\Users\\liter\\Documents\\GitHub\\LesDelinquants\\PolynomesAlgo\\PolynomesAlgo\\PolynomesAlgo\\PolynomesAlgo.cpp",
               "RelativeToolTip": "PolynomesAlgo\\PolynomesAlgo.cpp",
-              "ViewState": "AgIAAAwAAAAAAAAAAADwvxkAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAADwvw8AAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-02-27T10:48:57.746Z",
               "EditorCaption": ""

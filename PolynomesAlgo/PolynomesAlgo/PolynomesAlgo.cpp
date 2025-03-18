@@ -5,6 +5,7 @@
 int main()
 {
     Polynome* P = new Polynome();
+    Polynome* Q = new Polynome();
 
     Monome* a = new Monome(2, 1);
     Monome* b = new Monome(4, 0);
@@ -24,11 +25,14 @@ int main()
     P->Add(d);
     P->Add(e);
 
-    P->Add(f);
-    P->Add(g);
-    P->Add(h);
-    P->Add(i);
-    P->Add(j);
+    Q->Add(f);
+    Q->Add(g);
+    Q->Add(h);
+    Q->Add(i);
+    Q->Add(j);
 
+    P->DisplayPolynome();
+    Q->DisplayPolynome();
+    P->AddPolynomes(Q);
     P->DisplayPolynome();
 }

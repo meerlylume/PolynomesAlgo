@@ -1,4 +1,4 @@
-#include "Polynome.h"#include "Polynome.h"
+#include "Polynome.h"
 #include <iostream>
 
 using namespace std;
@@ -74,4 +74,13 @@ void Polynome::DisplayPolynome() {
     }
 
     cout << endl;
+}
+
+void Polynome::AddPolynomes(Polynome* other) {
+    Monome* z = other->head;
+
+    while (z != nullptr) {
+        Add(z);
+        z = z->next;
+    }
 }
