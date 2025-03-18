@@ -104,6 +104,11 @@ void Polynome::InputMonome() {
     cout << "Enter an exposant: ";
     exposant = GetIntInput();
 
+    if (value == 0) {
+        Menu();
+        return;
+    }
+
     Monome* newNode = new Monome(value, exposant);
     Add(newNode);
     DisplayPolynome();
@@ -142,6 +147,44 @@ void Polynome::InputPolynome() {
         InputPolynome();
         break;
     case 'N':
+        Menu();
+        break;
+    }
+}
+
+Monome* Polynome::DeriveMonome(Monome* monome) {
+    int value;
+    int exposant;
+
+    value    = monome->value * monome->exposant;
+    exposant = monome->exposant - 1;
+
+    Monome* derivedMonome = new Monome(value, exposant);
+
+    return derivedMonome;
+}
+
+
+void Polynome::Menu() {
+    cout << "What will you do ? " << endl;
+    cout << "A - Add a new Monome " << endl;
+    cout << "B - Derive your Polynome " << endl;
+    cout << "X - Exit " << endl;
+
+    char answer;
+    cin >> answer;
+    switch (toupper(answer))
+    {
+    default:
+        Menu();
+        break;
+    case 'A':
+        InputPolynome();
+        break;
+    case 'B':
+        DerivePolynome();
+        break;
+    case 'X':
         return;
         break;
     }
@@ -223,3 +266,18 @@ Polynome* Polynome::MultiplyPolynomes(Polynome* other) {
     return resultat;
 }
 
+void Polynome::DerivePolynome() {
+    Polynome* DerivedPolynome = new Polynome();
+
+    Monome* a = head;
+
+    while (a != nullptr) { 
+        DerivedPolynome->Add(DeriveMonome(a));
+        a = a->next;
+    }
+
+    head = DerivedPolynome->head;
+
+    DisplayPolynome();
+    Menu();
+}
