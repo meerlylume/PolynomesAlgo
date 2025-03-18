@@ -1,5 +1,7 @@
-#include "Polynome.h"#include "Polynome.h"
+#include "Polynome.h"
 #include <iostream>
+#include <list>
+#include <sstream>
 
 using namespace std;
 
@@ -25,29 +27,29 @@ void Polynome::Add(Monome* newMonome) {
 
     Monome* a = head;
     Monome* prev = nullptr;
-    while (a != nullptr && newMonome->exposant > a->exposant) {
+    while (a->next != nullptr && a->exposant < newMonome->exposant - 1) {
         prev = a;
         a = a->next;
     }
 
-    if (a != nullptr) 
-    {
-        if (newMonome->exposant == a->exposant) {
-            a->value += newMonome->value;
-        }
-        else if ( a->next != nullptr && newMonome->exposant == a->next->exposant) {
+    if (a->exposant == newMonome->exposant) {
+        a->value += newMonome->value;
+        return;
+    }
+
+    if (a->next != nullptr) {
+        if (a->next->exposant == newMonome->exposant) {
             a->next->value += newMonome->value;
         }
-        else if (newMonome->exposant > a->exposant) {
-            newMonome->next = a->next;
-            a->next = newMonome;
-        }
         else {
-            newMonome->next = a;
-            prev->next = newMonome;
+            AddAfterMonome(a, newMonome);
         }
-    } 
+    }
     else {
+        if (a->exposant > newMonome->exposant) {
+            AddAfterMonome(prev, newMonome);
+            return;
+        }
         AddToEndOfList(newMonome);
     }
 }
@@ -56,6 +58,7 @@ void Polynome::AddToEndOfList(Monome* newMonome) {
     Monome* a = head;
 
     while (a->next != nullptr) { a = a->next; }
+
     a->next = newMonome;
 }
 
@@ -65,10 +68,6 @@ void Polynome::AddAfterMonome(Monome* monome, Monome* toAdd) {
 }
 
 void Polynome::DisplayPolynome() {
-    if (head == nullptr) {
-        cout << "Polynome vide" << endl;
-    }
-
     Monome* a = head;
     while (a != nullptr) {
         if (a->next != nullptr) cout << a->value << "x^" << a->exposant << " + ";
@@ -79,43 +78,65 @@ void Polynome::DisplayPolynome() {
     cout << endl;
 }
 
-void Polynome::AddPolynomes(Polynome* p) {
-    if (head == nullptr && p->head != nullptr) {
-        head = p->head;
-        cout << "Résultat de l'addition: ";
-        DisplayPolynome();
-        return;
-    }
-    else if (p->head == nullptr && head != nullptr) {
-        p->head = head;
-        cout << "Résultat de l'addition: ";
-        DisplayPolynome();
-        return;
-    }
+void Polynome::AddPolynomes(Polynome* other) {
+    Monome* z = other->head;
 
-    /*Polynome* resultat = new Polynome();
-    Monome* a = p->head;
-    while (a != nullptr) {
-        Monome* copy = new Monome(a->value, a->exposant);
-        cout << "adding" << endl;
-        resultat->Add(copy);
-        a = a->next;
+    while (z != nullptr) {
+        Add(z);
+        z = z->next;
     }
-    a = head;
-    while (a != nullptr) {
-        Monome* copy = new Monome(a->value, a->exposant);
-        cout << "adding" << endl;
-        resultat->Add(copy);
-        a = a->next;
-    }
-    resultat->DisplayPolynome();*/
+}
 
-    Monome* a = p->head;
-    while (a != nullptr) {
-        Monome* copy = new Monome(a->value, a->exposant);
-        Add(copy);
-        a = a->next;
-    }
+void Polynome::InputMonome() {
+    int value    = 0;
+    int exposant = 0;
+    int input    = 0;
+
+    cout << "Enter a coefficient: ";
+    value    = GetIntInput();
+
+    cout << "Enter an exposant: ";
+    exposant = GetIntInput();
+
+    Monome* newNode = new Monome(value, exposant);
+    Add(newNode);
     DisplayPolynome();
-    
+}
+
+int Polynome::GetIntInput() {
+    bool isValid = false;
+    int input;
+
+    while (!isValid) {
+        cin >> input;
+        if (!cin) {
+            cout << "Not an integer. Try again " << endl;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
+        else {
+            isValid = true;
+            return input;
+        }
+    }
+}
+
+void Polynome::InputPolynome() {
+    cout << endl;
+    InputMonome();
+    cout << "Continue? Y/N ";
+    char answer;
+    cin >> answer;
+    switch (toupper(answer))
+    {
+    default:
+        return;
+        break;
+    case 'Y':
+        InputPolynome();
+        break;
+    case 'N':
+        return;
+        break;
+    }
 }
