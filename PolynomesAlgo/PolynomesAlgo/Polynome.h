@@ -18,6 +18,7 @@ public:
 	void Add(Monome* newMonome);
 	void InputPolynome();
 	Polynome* AddPolynomes(Polynome* other);
+	Polynome* MultiplyPolynomes(Polynome* other);
 
 	Monome* head;
 };
