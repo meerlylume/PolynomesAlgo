@@ -8,6 +8,10 @@ Polynome::Polynome() {
 }
 
 void Polynome::Add(Monome* newMonome) {
+    if (newMonome->value == 0) {
+        return;
+    }
+
     if (head == nullptr) {
         head = newMonome;
         return;
@@ -34,9 +38,11 @@ void Polynome::Add(Monome* newMonome) {
     {
         if (newMonome->exposant == a->exposant) {
             a->value += newMonome->value;
+            FreeSpace(prev, a);
         }
         else if ( a->next != nullptr && newMonome->exposant == a->next->exposant) {
             a->next->value += newMonome->value;
+            FreeSpace(a, a->next);
         }
         else if (newMonome->exposant > a->exposant) {
             newMonome->next = a->next;
@@ -49,6 +55,14 @@ void Polynome::Add(Monome* newMonome) {
     } 
     else {
         AddToEndOfList(newMonome);
+    }
+}
+
+void Polynome::FreeSpace(Monome* prev, Monome* current) {
+    if (current->value == 0)
+    {
+        prev->next = current->next;
+        delete current;
     }
 }
 
@@ -79,43 +93,40 @@ void Polynome::DisplayPolynome() {
     cout << endl;
 }
 
-void Polynome::AddPolynomes(Polynome* p) {
+Polynome* Polynome::AddPolynomes(Polynome* p) {
+    Polynome* resultat = new Polynome();
+
     if (head == nullptr && p->head != nullptr) {
-        head = p->head;
+        resultat->head = p->head;
         cout << "Résultat de l'addition: ";
         DisplayPolynome();
-        return;
+        return resultat;
     }
     else if (p->head == nullptr && head != nullptr) {
         p->head = head;
         cout << "Résultat de l'addition: ";
         DisplayPolynome();
-        return;
+        return resultat;
+    }
+    else if (head == nullptr && p->head == nullptr) {
+        cout << "Les deux polynomes sont vides." << endl;
+        return resultat;
     }
 
-    /*Polynome* resultat = new Polynome();
     Monome* a = p->head;
     while (a != nullptr) {
         Monome* copy = new Monome(a->value, a->exposant);
-        cout << "adding" << endl;
         resultat->Add(copy);
         a = a->next;
     }
     a = head;
     while (a != nullptr) {
         Monome* copy = new Monome(a->value, a->exposant);
-        cout << "adding" << endl;
         resultat->Add(copy);
         a = a->next;
     }
-    resultat->DisplayPolynome();*/
 
-    Monome* a = p->head;
-    while (a != nullptr) {
-        Monome* copy = new Monome(a->value, a->exposant);
-        Add(copy);
-        a = a->next;
-    }
-    DisplayPolynome();
+    resultat->DisplayPolynome();
+    return resultat;
     
 }

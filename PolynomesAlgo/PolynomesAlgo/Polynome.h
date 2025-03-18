@@ -9,11 +9,12 @@ class Polynome
 private:
 	void AddToEndOfList(Monome* newMonome);
 	void AddAfterMonome(Monome* monome, Monome* toAdd);
+	void FreeSpace(Monome* prev, Monome* current);
 public:
 	Polynome();
 	void DisplayPolynome();
 	void Add(Monome* newMonome);
-	void AddPolynomes(Polynome* other);
+	Polynome* AddPolynomes(Polynome* other);
 
 	Monome* head;
 };
