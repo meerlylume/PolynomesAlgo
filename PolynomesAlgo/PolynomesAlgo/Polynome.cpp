@@ -23,6 +23,11 @@ void Polynome::Add(Monome* newMonome) {
 
     if (head->exposant == newMonome->exposant) {
         head->value += newMonome->value; //change later to factorise into Monome (?)
+        if (head->value == 0) {
+            Monome* toDel = head;
+            head = head->next;
+            free(toDel);
+        }
         return;
     }
     if (head->exposant > newMonome->exposant) {
@@ -40,6 +45,7 @@ void Polynome::Add(Monome* newMonome) {
 
     if (a->exposant == newMonome->exposant) {
         a->value += newMonome->value;
+        FreeSpace(prev, a);
         return;
     }
 
@@ -272,7 +278,8 @@ void Polynome::DerivePolynome() {
     Monome* a = head;
 
     while (a != nullptr) { 
-        DerivedPolynome->Add(DeriveMonome(a));
+        Monome* b = DeriveMonome(a);
+        if (b->value != 0) DerivedPolynome->Add(b);
         a = a->next;
     }
 
@@ -280,4 +287,16 @@ void Polynome::DerivePolynome() {
 
     DisplayPolynome();
     Menu();
+}
+
+Polynome* Polynome::SubstractPolynomes(Polynome* other) {
+    Monome* z = other->head;
+
+    while (z != nullptr) {
+        z->value *= -1;
+        Add(z);
+        z = z->next;
+    }
+
+    return this;
 }

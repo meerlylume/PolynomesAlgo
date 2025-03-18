@@ -8,7 +8,6 @@ using namespace std;
 
 int main()
 {
-    /*
     Polynome* P = new Polynome();
     Polynome* Q = new Polynome();
 
@@ -16,8 +15,8 @@ int main()
     Monome* b = new Monome(2, 1);
     Monome* c = new Monome(3, 3);
 
-    Monome* f = new Monome(-2, 1);
-    Monome* g = new Monome(-3, 3);
+    Monome* f = new Monome(2, 1);
+    Monome* g = new Monome(3, 3);
 
     P->Add(a);
     P->Add(b);
@@ -28,10 +27,9 @@ int main()
 
     P->DisplayPolynome();
     Q->DisplayPolynome();
-    P->AddPolynomes(Q);
+    P->SubstractPolynomes(Q);
     P->DisplayPolynome();
-    */
 
-    Polynome* R = new Polynome();
-    R->InputPolynome();
+    //Polynome* R = new Polynome();
+    //R->InputPolynome();
 }
