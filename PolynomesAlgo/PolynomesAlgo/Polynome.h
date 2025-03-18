@@ -23,6 +23,7 @@ public:
 	void DerivePolynome();
 	void Menu();
 	Polynome* Primitive();
+	Polynome* Duplicate();
 
 	Monome* head;
 };
