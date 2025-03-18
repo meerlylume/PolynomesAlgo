@@ -5,6 +5,7 @@
 int main()
 {
     Polynome* P = new Polynome();
+    Polynome* Q = new Polynome();
 
     Monome* a = new Monome(2, 1);
     Monome* b = new Monome(4, 0);
@@ -14,7 +15,7 @@ int main()
 
     Monome* f = new Monome(8, 5);
     Monome* g = new Monome(3, 1);
-    Monome* h = new Monome(9, 9);
+    Monome* h = new Monome(19, 9);
     Monome* i = new Monome(4, 1);
     Monome* j = new Monome(2, 0);
 
@@ -24,11 +25,15 @@ int main()
     P->Add(d);
     P->Add(e);
 
-    P->Add(f);
-    P->Add(g);
-    P->Add(h);
-    P->Add(i);
-    P->Add(j);
+    Q->Add(f);
+    Q->Add(g);
+    Q->Add(h);
+    Q->Add(i);
+    Q->Add(j);
 
     P->DisplayPolynome();
+    Q->DisplayPolynome();
+    cout << endl;
+
+    Q->AddPolynomes(P);
 }
