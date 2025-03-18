@@ -105,10 +105,10 @@ void Polynome::InputMonome() {
     float input    = 0;
 
     cout << "Enter a coefficient: ";
-    value    = GetIntInput();
+    value    = GetFloatInput();
 
     cout << "Enter an exposant: ";
-    exposant = GetIntInput();
+    exposant = GetFloatInput();
 
     if (value == 0) {
         Menu();
@@ -120,14 +120,14 @@ void Polynome::InputMonome() {
     DisplayPolynome();
 }
 
-int Polynome::GetIntInput() {
+float Polynome::GetFloatInput() {
     bool isValid = false;
     float input;
 
     while (!isValid) {
         cin >> input;
         if (!cin) {
-            cout << "Not an integer. Try again " << endl;
+            cout << "Not an float. Try again " << endl;
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
