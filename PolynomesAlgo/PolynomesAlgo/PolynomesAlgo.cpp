@@ -43,5 +43,5 @@ int main()
     */
 
     Polynome* R = new Polynome();
-    R->InputMonome();
+    R->InputPolynome();
 }
