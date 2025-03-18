@@ -2,6 +2,7 @@
 #include <iostream>
 #include <list>
 #include <sstream>
+#include <cstdlib>
 
 using namespace std;
 
@@ -11,6 +12,7 @@ Polynome::Polynome() {
 
 void Polynome::Add(Monome* newMonome) {
     if (newMonome->value == 0) {
+        free(newMonome);
         return;
     }
 
