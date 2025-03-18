@@ -127,7 +127,7 @@ float Polynome::GetFloatInput() {
     while (!isValid) {
         cin >> input;
         if (!cin) {
-            cout << "Not an float. Try again " << endl;
+            cout << "Not a float. Try again " << endl;
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }

@@ -3,35 +3,15 @@
 #include <sstream>
 #include "Monome.h"
 #include "Polynome.h"
+#include "Polist.h"
 
 using namespace std;
 
 int main()
 {
-    
-    // Polynome* P = new Polynome();
-    // Polynome* Q = new Polynome();
-
-    // Monome* a = new Monome(3, 0);
-    // Monome* b = new Monome(2, 1);
-    // Monome* c = new Monome(3, 3);
-
-    // Monome* f = new Monome(2, 1);
-    // Monome* g = new Monome(3, 3);
-
-    // P->Add(a);
-    // P->Add(b);
-    // P->Add(c);
-
-    // Q->Add(f);
-    // Q->Add(g);
-
-    // P->DisplayPolynome();
-    // P->Primitive();
-    // Q->DisplayPolynome();
-    // P->SubstractPolynomes(Q);
-    // P->DisplayPolynome();
+    Polist* polist = new Polist();
 
     Polynome* R = new Polynome();
+    polist->head = R;
     R->InputPolynome();
 }

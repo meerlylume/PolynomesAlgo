@@ -10,7 +10,7 @@ private:
 	void AddToEndOfList(Monome* newMonome);
 	void AddAfterMonome(Monome* monome, Monome* toAdd);
 	void InputMonome();
-	float  GetFloatInput();
+	float GetFloatInput();
 	void FreeSpace(Monome* prev, Monome* current);
 public:
 	Polynome();
@@ -25,6 +25,7 @@ public:
 	Polynome* Primitive();
 	Polynome* Duplicate();
 
+	Polynome* next;
 	Monome* head;
 };
 
