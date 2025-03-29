@@ -1,6 +1,2 @@
-﻿  Monome.cpp
-  Polynome.cpp
-  Generating Code...
-C:\Users\liter\Documents\GitHub\LesDelinquants\PolynomesAlgo\PolynomesAlgo\PolynomesAlgo\Polynome.cpp(139): warning C4715: 'Polynome::GetFloatInput': not all control paths return a value
-  LINK : C:\Users\liter\Documents\GitHub\LesDelinquants\PolynomesAlgo\PolynomesAlgo\x64\Debug\PolynomesAlgo.exe not found or not built by the last incremental link; performing full link
-  PolynomesAlgo.vcxproj -> C:\Users\liter\Documents\GitHub\LesDelinquants\PolynomesAlgo\PolynomesAlgo\x64\Debug\PolynomesAlgo.exe
+﻿  PolynomesAlgo.cpp
+  PolynomesAlgo.vcxproj -> C:\Users\Lucie\Documents\GitHub\PolynomesAlgo\PolynomesAlgo\x64\Debug\PolynomesAlgo.exe
