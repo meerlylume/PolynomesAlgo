@@ -1,5 +1,6 @@
 #pragma once
 #include "Monome.h"
+#include <list>
 #include <iostream>
 
 using namespace std;
@@ -15,12 +16,13 @@ private:
 public:
 	Polynome();
 	void DisplayPolynome();
+	void DisplayPolynomes(list<Polynome*> polynomes);
 	void Add(Monome* newMonome);
 	void InputPolynome();
 	Polynome* AddPolynomes(Polynome* other);
 	Polynome* SubstractPolynomes(Polynome* other);
 	Polynome* MultiplyPolynomes(Polynome* other);
-	void DerivePolynome();
+	Polynome* DerivePolynome();
 	void Menu();
 	Polynome* Primitive();
 	Polynome* Duplicate();

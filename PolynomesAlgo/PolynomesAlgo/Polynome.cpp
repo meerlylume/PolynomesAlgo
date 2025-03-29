@@ -91,8 +91,16 @@ void Polynome::AddAfterMonome(Monome* monome, Monome* toAdd) {
 void Polynome::DisplayPolynome() {
     Monome* a = head;
     while (a != nullptr) {
-        if (a->next != nullptr) cout << a->value << "x^" << a->exposant << " + ";
+
+        if (a->exposant == 0 && a->exposant != 1)
+            cout << a->value;
+        else if (a->exposant != 0 && a->exposant == 1)
+            cout << a->value << "x";
         else cout << a->value << "x^" << a->exposant;
+
+        if (a->next != nullptr && a->next->value > 0) cout << " + ";
+        else if (a->next != nullptr && a->next->value < 0) cout << " ";
+
         a = a->next;
     }
 
@@ -153,12 +161,11 @@ void Polynome::InputPolynome() {
         InputPolynome();
         break;
     case 'N':
-        Menu();
         break;
     }
 }
 
-void Polynome::Menu() {
+void Polynome::Menu() {/*
     cout << "What will you do ? " << endl;
     cout << "A - Add a new Monome " << endl;
     cout << "B - Derive your Polynome " << endl;
@@ -179,8 +186,8 @@ void Polynome::Menu() {
         break;
     case 'X':
         return;
-        break;
-    }
+        break;*/
+    /*}*/
 }
 
 Polynome* Polynome::AddPolynomes(Polynome* other) {
@@ -217,7 +224,6 @@ Polynome* Polynome::AddPolynomes(Polynome* other) {
     }
 
     delete a;
-    resultat->DisplayPolynome();
     return resultat;
     
 }
@@ -255,11 +261,10 @@ Polynome* Polynome::MultiplyPolynomes(Polynome* other) {
         a = a->next;
         b = other->head;
     }
-    resultat->DisplayPolynome();
     return resultat;
 }
 
-void Polynome::DerivePolynome() {
+Polynome* Polynome::DerivePolynome() {
     Polynome* DerivedPolynome = new Polynome();
 
     Monome* a = head;
@@ -269,23 +274,42 @@ void Polynome::DerivePolynome() {
         if (b->value != 0) DerivedPolynome->Add(b);
         a = a->next;
     }
-
-    head = DerivedPolynome->head;
-
-    DisplayPolynome();
-    Menu();
+    return DerivedPolynome;
 }
 
 Polynome* Polynome::SubstractPolynomes(Polynome* other) {
-    Monome* z = other->head;
+    Polynome* resultat = new Polynome();
 
-    while (z != nullptr) {
-        z->value *= -1;
-        Add(z);
-        z = z->next;
+    if (head == nullptr && other->head != nullptr) {
+        resultat->head = other->head;
+        cout << "Substract results: ";
+        return resultat;
+    }
+    else if (other->head == nullptr && head != nullptr) {
+        other->head = head;
+        cout << "Substract results: ";
+        return resultat;
+    }
+    else if (head == nullptr && other->head == nullptr) {
+        cout << "Both polynomes are empty." << endl;
+        return resultat;
     }
 
-    return this;
+    Monome* a = head;
+    while (a != nullptr) {
+        Monome* copy = new Monome(a->value, a->exposant);
+        resultat->Add(copy);
+        a = a->next;
+    }
+     a = other->head;
+    while (a != nullptr) {
+        Monome* copy = new Monome(a->value * -1, a->exposant);
+        resultat->Add(copy);
+        a = a->next;
+    }
+
+    delete a;
+    return resultat;
 }
 
 Polynome* Polynome::Primitive() {
@@ -295,14 +319,20 @@ Polynome* Polynome::Primitive() {
     while (a != nullptr) {
         Monome* primitiveMonome = a->PrimitiveMonome();
         resultat->Add(primitiveMonome);
-        cout << primitiveMonome->value << "||" << primitiveMonome->exposant << endl;
         a = a->next;
     }
-    resultat->DisplayPolynome();
     return resultat;
 }
 
 Polynome* Polynome::Duplicate() {
     Polynome* copy = this;
     return copy;
+}
+
+void Polynome::DisplayPolynomes(list<Polynome*> polynomes) {
+    int i = 1;
+    for (Polynome* p : polynomes) {
+        cout << "polynome " << i++ << " : ";
+        p->DisplayPolynome();
+    }
 }
