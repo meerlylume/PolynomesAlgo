@@ -27,14 +27,16 @@ int main() {
         cin.ignore();
 
         switch (choice) {
-        case 1: {
+        case 1: 
+        {
             Polynome* p = new Polynome();
             p->InputPolynome();
             polynomes.push_back(p);
             cout << "Polynomial added!" << endl;
             break;
         }
-        case 2: {
+        case 2: 
+        {
             int i = 1;
             for (Polynome* p : polynomes) {
                 cout << "Polynomial " << i++ << " : ";
@@ -44,7 +46,8 @@ int main() {
         }
         case 3:
         case 4:
-        case 5: {
+        case 5: 
+        {
             if (polynomes.size() < 2) {
                 cout << "You need at least 2 polynomials to perform this operation." << endl;
                 break;
@@ -57,8 +60,20 @@ int main() {
             }
 
             int p1, p2;
-            cout << "Choose two polynomials (1 to " << polynomes.size() << ") : ";
-            cin >> p1 >> p2;
+            bool validInput = false;
+            while (!validInput) {
+                cout << "Choose two polynomials (1 to " << polynomes.size() << ") : ";
+                cin >> p1 >> p2;
+
+                if (cin.fail() || p1 < 1 || p2 < 1 || p1 > polynomes.size() || p2 > polynomes.size()) {
+                    cout << "Invalid input. Please choose two different valid indices within the range (1 to " << polynomes.size() << ")." << endl;
+                    cin.clear(); 
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
+                }
+                else {
+                    validInput = true; 
+                }
+            }
 
             auto it1 = next(polynomes.begin(), p1 - 1);
             auto it2 = next(polynomes.begin(), p2 - 1);
@@ -82,7 +97,8 @@ int main() {
             break;
         }
         case 6:
-        case 7: {
+        case 7: 
+        {
             if (polynomes.empty()) {
                 cout << "No polynomial available." << endl;
                 break;
@@ -93,10 +109,22 @@ int main() {
                 cout << "Polynomial " << i++ << " : ";
                 p->DisplayPolynome();
             }
-
             int p;
-            cout << "Choose a polynomial (1 to " << polynomes.size() << ") : ";
-            cin >> p;
+            bool validInput = false;
+            while (!validInput) {
+                cout << "Choose a polynomial (1 to " << polynomes.size() << ") : ";
+                cin >> p ;
+
+                
+                if (cin.fail() || p < 1 || p > polynomes.size()) {
+                    cout << "Invalid input. Please choose a different valid indice within the range (1 to " << polynomes.size() << ")." << endl;
+                    cin.clear(); 
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
+                }
+                else {
+                    validInput = true; 
+                }
+            }
 
             auto it = next(polynomes.begin(), p - 1);
             Polynome* res = (choice == 6) ? (*it)->DerivePolynome() : (*it)->Primitive();
@@ -105,9 +133,15 @@ int main() {
             break;
         }
         case 8:
-            /*bool wantToContinue = true;
+        {
+            if (polynomes.empty()) {
+                cout << "There are no polynomials to delete." << endl;
+                break;
+            }
 
-            while (wantToContinue) {
+            bool continuer = true;
+            while (continuer) {
+                cout << "\nExisting polynomials: " << endl;
                 int i = 1;
                 for (Polynome* p : polynomes) {
                     cout << "Polynomial " << i++ << " : ";
@@ -115,14 +149,38 @@ int main() {
                 }
 
                 int p;
-                cout << "Choose a polynomial (1 to " << polynomes.size() << ") : ";
-                cin >> p;
+                bool validInput = false;
 
-                auto it = next(polynomes.begin(), p - 1);
+                while (!validInput) {
+                    cout << "Enter the number of the polynomial to delete (or 0 to stop): ";
+                    cin >> p;
 
-                Monome* a = (*it)->head;
-            }*/
+                    if (p == 0) {
+                        validInput = true; 
+                        continuer = false; 
+                        break;
+                    }
 
+                    else if (cin.fail() || p < 1 || p > polynomes.size()) {
+                        cout << "Invalid input. Please choose a valid index within the range (1 to " << polynomes.size() << ")." << endl;
+                        cin.clear(); 
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
+                    }
+                    else {
+                        validInput = true; 
+                    }
+                }
+
+                
+                if (validInput && p != 0) {
+                    auto it = next(polynomes.begin(), p - 1);
+                    delete* it; 
+                    polynomes.erase(it); 
+                    cout << "Polynomial successfully deleted!" << endl;
+                }
+            }
+            break;
+        }
         case 9:
             cout << "Goodbye!" << endl;
             running = false;

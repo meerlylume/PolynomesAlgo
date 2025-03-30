@@ -15,6 +15,7 @@ private:
 	void FreeSpace(Monome* prev, Monome* current);
 public:
 	Polynome();
+	~Polynome();
 	void DisplayPolynome();
 	void DisplayPolynomes(list<Polynome*> polynomes);
 	void Add(Monome* newMonome);
