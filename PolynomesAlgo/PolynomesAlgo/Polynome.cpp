@@ -10,6 +10,17 @@ Polynome::Polynome() {
 
 }
 
+Polynome::~Polynome() {
+    Monome* current = head;
+    while (current != nullptr) {
+        Monome* next = current->next;
+        delete current; // Libère la mémoire du monôme actuel
+        current = next;
+        cout << "deleting" << endl;
+    }
+    head = nullptr; // Évite d'avoir un pointeur dangling
+}
+
 void Polynome::Add(Monome* newMonome) {
     if (newMonome->value == 0) {
         free(newMonome);
