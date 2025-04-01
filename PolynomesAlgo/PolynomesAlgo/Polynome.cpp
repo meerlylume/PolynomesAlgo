@@ -33,7 +33,7 @@ void Polynome::Add(Monome* newMonome) {
     }
 
     if (head->exposant == newMonome->exposant) {
-        head->value += newMonome->value; //change later to factorise into Monome (?)
+        head->value += newMonome->value;
         if (head->value == 0) {
             Monome* toDel = head;
             head = head->next;

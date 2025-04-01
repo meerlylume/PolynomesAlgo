@@ -9,6 +9,9 @@ using namespace std;
 int main() {
     list<Polynome*> polynomes; // Stores the polynomials created by the user
     bool running = true;
+    char choice;
+
+
     while (running) {
         cout << "\n==== Main Menu ====\n";
         cout << "1 - Create a new polynomial\n";
@@ -22,12 +25,12 @@ int main() {
         cout << "9 - Quit\n";
         cout << "Your choice: ";
 
-        int choice;
         cin >> choice;
         cin.ignore();
 
+
         switch (choice) {
-        case 1: 
+        case '1': 
         {
             Polynome* p = new Polynome();
             p->InputPolynome();
@@ -35,7 +38,7 @@ int main() {
             cout << "Polynomial added!" << endl;
             break;
         }
-        case 2: 
+        case '2': 
         {
             int i = 1;
             for (Polynome* p : polynomes) {
@@ -44,9 +47,9 @@ int main() {
             }
             break;
         }
-        case 3:
-        case 4:
-        case 5: 
+        case '3':
+        case '4':
+        case '5': 
         {
             if (polynomes.size() < 2) {
                 cout << "You need at least 2 polynomials to perform this operation." << endl;
@@ -96,8 +99,8 @@ int main() {
             cout << "Result added to the list of polynomials." << endl;
             break;
         }
-        case 6:
-        case 7: 
+        case '6':
+        case '7': 
         {
             if (polynomes.empty()) {
                 cout << "No polynomial available." << endl;
@@ -132,7 +135,7 @@ int main() {
             polynomes.push_back(res);
             break;
         }
-        case 8:
+        case '8':
         {
             if (polynomes.empty()) {
                 cout << "There are no polynomials to delete." << endl;
@@ -181,12 +184,14 @@ int main() {
             }
             break;
         }
-        case 9:
+        case '9':
             cout << "Goodbye!" << endl;
             running = false;
             break;
         default:
             cout << "Invalid option, please try again." << endl;
+            cin >> choice;
+            break;
         }
     }
 
