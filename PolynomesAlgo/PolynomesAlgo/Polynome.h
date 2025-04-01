@@ -24,7 +24,6 @@ public:
 	Polynome* SubstractPolynomes(Polynome* other);
 	Polynome* MultiplyPolynomes(Polynome* other);
 	Polynome* DerivePolynome();
-	void Menu();
 	Polynome* Primitive();
 	Polynome* Duplicate();
 

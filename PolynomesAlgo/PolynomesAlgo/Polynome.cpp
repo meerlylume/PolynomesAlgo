@@ -130,7 +130,6 @@ void Polynome::InputMonome() {
     exposant = GetFloatInput();
 
     if (value == 0) {
-        Menu();
         return;
     }
 
@@ -174,31 +173,6 @@ void Polynome::InputPolynome() {
     case 'N':
         break;
     }
-}
-
-void Polynome::Menu() {/*
-    cout << "What will you do ? " << endl;
-    cout << "A - Add a new Monome " << endl;
-    cout << "B - Derive your Polynome " << endl;
-    cout << "X - Exit " << endl;
-
-    char answer;
-    cin >> answer;
-    switch (toupper(answer))
-    {
-    default:
-        Menu();
-        break;
-    case 'A':
-        InputPolynome();
-        break;
-    case 'B':
-        DerivePolynome();
-        break;
-    case 'X':
-        return;
-        break;*/
-    /*}*/
 }
 
 Polynome* Polynome::AddPolynomes(Polynome* other) {
