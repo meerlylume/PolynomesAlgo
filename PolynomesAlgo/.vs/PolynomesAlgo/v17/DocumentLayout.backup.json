@@ -57,8 +57,7 @@
               "ViewState": "AgIAAJwAAAAAAAAAAAAAALMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-03-13T08:45:59.782Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -71,8 +70,7 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-03-13T08:40:41.524Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -106,7 +104,7 @@
               "RelativeDocumentMoniker": "PolynomesAlgo\\PolynomesAlgo.cpp",
               "ToolTip": "C:\\Users\\liter\\Documents\\GitHub\\LesDelinquants\\PolynomesAlgo\\PolynomesAlgo\\PolynomesAlgo\\PolynomesAlgo.cpp",
               "RelativeToolTip": "PolynomesAlgo\\PolynomesAlgo.cpp",
-              "ViewState": "AgIAAKgAAAAAAAAAAAAAwLoAAAAQAAAAAAAAAA==",
+              "ViewState": "AgIAAHgAAAAAAAAAAAAqwIAAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-02-27T10:48:57.746Z",
               "EditorCaption": ""

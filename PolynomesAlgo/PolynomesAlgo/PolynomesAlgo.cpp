@@ -82,11 +82,11 @@ int main() {
             auto it2 = next(polynomes.begin(), p2 - 1);
 
             Polynome* res;
-            if (choice == 3) {
+            if (choice == '3') {
                 res = (*it1)->AddPolynomes(*it2);
                 res->DisplayPolynome();
             }
-            else if (choice == 4) {
+            else if (choice == '4') {
                 res = (*it1)->SubstractPolynomes(*it2);
                 res->DisplayPolynome();
             }
@@ -130,7 +130,7 @@ int main() {
             }
 
             auto it = next(polynomes.begin(), p - 1);
-            Polynome* res = (choice == 6) ? (*it)->DerivePolynome() : (*it)->Primitive();
+            Polynome* res = (choice == '6') ? (*it)->DerivePolynome() : (*it)->Primitive();
             res->DisplayPolynome();
             polynomes.push_back(res);
             break;
