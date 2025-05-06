@@ -12,6 +12,7 @@ private:
 	void AddAfterMonome(Monome* monome, Monome* toAdd);
 	void InputMonome();
 	float GetFloatInput();
+	int GetIntInput();
 	void FreeSpace(Monome* prev, Monome* current);
 public:
 	Polynome();

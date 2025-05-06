@@ -120,14 +120,14 @@ void Polynome::DisplayPolynome() {
 
 void Polynome::InputMonome() {
     float value    = 0;
-    float exposant = 0;
+    int exposant = 0;
     float input    = 0;
 
     cout << "Enter a coefficient: ";
     value    = GetFloatInput();
 
     cout << "Enter an exposant: ";
-    exposant = GetFloatInput();
+    exposant = GetIntInput();
 
     if (value == 0) {
         return;
@@ -145,12 +145,32 @@ float Polynome::GetFloatInput() {
     while (!isValid) {
         cin >> input;
         if (!cin) {
-            cout << "Not an float. Try again " << endl;
+            cout << "Not a float. Try again " << endl;
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
         else {
             isValid = true;
+            return input;
+        }
+    }
+}
+
+int Polynome::GetIntInput() {
+    bool isValid = false;
+    int input;
+
+    while (!isValid) {
+        cin >> input;
+        if (!cin) {
+            cout << "Not an int. Try again " << endl;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
+        else {
+            isValid = true;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             return input;
         }
     }
@@ -230,7 +250,7 @@ Polynome* Polynome::MultiplyPolynomes(Polynome* other) {
     Monome* a = head;
     Monome* b = other->head;
     float value;
-    float exposant;
+    int exposant;
 
     while (a != nullptr) {
         while (b != nullptr) {

@@ -3,13 +3,13 @@
 
 using namespace std;
 
-Monome::Monome(float value, float exposant) : value(value), exposant(exposant) {
+Monome::Monome(float value, int exposant) : value(value), exposant(exposant) {
 
 }
 
 Monome* Monome::PrimitiveMonome() {
 	float value = 0;
-	float exposant = 0;
+	int exposant = 0;
 
 	exposant = this->exposant + 1;
 	value = this->value / exposant;
@@ -20,7 +20,7 @@ Monome* Monome::PrimitiveMonome() {
 
 Monome* Monome::DeriveMonome() {
 	float newValue;
-	float newExposant;
+	int newExposant;
 
 	newValue    = value * exposant;
 	newExposant = exposant - 1;
